@@ -489,7 +489,7 @@
             worktime: worktime["y" + year] && worktime["y" + year][formateDayD4(month, day)] ? worktime["y" + year][formateDayD4(month, day)] : 0,
             term: termList[formateDayD4(month, day)],
             lunarYear: lunarDate[0],
-            lunarMonth: lunarDate[1] + 1,
+            lunarMonth: lunarLeapMonth > 0 && lunarLeapMonth < lunarDate[1] + 1 ? lunarDate[1] : lunarDate[1] + 1,
             lunarDay: lunarDate[2],
             lunarMonthName: lunarMonthName,
             lunarDayName: DATA.dateCn[lunarDate[2] - 1],
