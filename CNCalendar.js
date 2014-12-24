@@ -422,7 +422,7 @@
     function lunarToSolar(_year, _month, _day) {
     	// 过滤闰月，如果不需要过滤，可以删除下面两行，并且_month值为1-13
         var lunarLeapMonth = getLunarLeapYear(_year);
-        if(lunarLeapMonth>0&&_month>lunarLeapMonth) _month+=1;
+        _month = lunarLeapMonth>0&&_month>lunarLeapMonth ? parseInt(_month)+1 : _month;
         
         var inputDate = formateDate(_year, _month, _day);
         if (inputDate.error) return inputDate;
