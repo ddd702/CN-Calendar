@@ -417,9 +417,13 @@
     }
     /**
 	 * 将农历转换为公历
-	 * @param {Number} year,month,day 农历年，月(1-13，有闰月)，日
+	 * @param {Number} year,month,day 农历年，月(1-12，闰月自动忽略)，日
 	 */
     function lunarToSolar(_year, _month, _day) {
+    	// 过滤闰月，如果不需要过滤，可以删除下面两行，并且_month值为1-13
+        var lunarLeapMonth = getLunarLeapYear(_year);
+        if(lunarLeapMonth>0&&_month>lunarLeapMonth) _month+=1;
+        
         var inputDate = formateDate(_year, _month, _day);
         if (inputDate.error) return inputDate;
         var year = inputDate.year;
